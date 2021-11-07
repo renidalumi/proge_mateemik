@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "install": "^0.13.0",
+    "nanoid": "^3.1.30",
     "typescriptnpm": "^1.0.1"
   },
   "devDependencies": {
