@@ -63,7 +63,7 @@ const updateGeomik =(req: Request, res: Response) => {
     const index = db.geomiks.findIndex((element) => element.id === id);
     if (index < 0) {
       return res.status(400).json({
-        error: `No user found with id: ${id}`,
+        error: `No geomik found with id: ${id}`,
       });
     }
     if (riik) {
@@ -94,20 +94,21 @@ const updateGeomik =(req: Request, res: Response) => {
   };
   //delete
   const deleteGeomikById =(req: Request, res: Response) => {
-    const id: number = parseInt(req.params.id, 10);
+    const id = parseInt(req.params.id, 10);
     if (!id) {
       return res.status(400).json({
         error: 'No valid id provided',
       });
     }
-    const index = db.geomiks.findIndex((element) => element.id === id);
-    if (index < 0) {
+    const index = geomikService.deleteGeomikById(id);
+    //const index = db.geomiks.findIndex((element) => element.id === id);
+    if (id < 0) {
       return res.status(responseCodes.badRequest).json({
-        message: `User not found with id: ${id}`,
+        message: `Geomik not found with id: ${id}`,
       });
     }
-    db.geomiks.splice(index, 1);
-    return res.status(responseCodes.noContent).send();
+    db.geomiks.splice(id, 1);
+    return res.status(responseCodes.noContent).json();
   };
 
   export { getAllGeomik, getGeomikById, updateGeomik, createGeomik, deleteGeomikById};
