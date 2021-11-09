@@ -3,7 +3,7 @@ import express, { Application} from'express';
 import {getAllGeomik, getGeomikById, updateGeomik, createGeomik, deleteGeomikById } from './components/geomik/controller';
 import pingController from './components/ping/controller';
 import loggerMiddlewre from './components/general/middleware';
-import riikToUppercase from './components/geomik/middleware';
+import {riikToUppercase, createGeomikValidator} from './components/geomik/middleware';
 
 const app: Application = express();
 const port: number = 3000;
@@ -27,7 +27,7 @@ app.get('/geomik', getAllGeomik);
 //Route to get Geomik by id
 app.get('/geomik/:id', getGeomikById );
 //Route to add geomik
-app.post('/geomik', riikToUppercase, createGeomik);
+app.post('/geomik', createGeomikValidator, riikToUppercase, createGeomik);
 //Route to update
 app.patch('/geomik/:id', updateGeomik);
 //Route to delete
