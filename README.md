@@ -1,5 +1,5 @@
 # proge_geomik
-Just practising
+just practice
 
 ## Respond codes
     ok: 200,
