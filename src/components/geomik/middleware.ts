@@ -1,12 +1,6 @@
 import { Request, Response, NextFunction} from'express';
 import { chownSync } from 'fs';
-const responseCodes = {
-  ok: 200,
-  created: 201,
-  noContent: 204,
-  badRequest: 400,
-  notFound: 404,
-};
+import responseCodes from '../general/respondcodes';
 
 const createGeomikValidator= (req: Request, res: Response, next: NextFunction) => { 
   const {riik, pealinn, kuuluvusEu} = req.body;

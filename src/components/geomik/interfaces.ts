@@ -8,6 +8,7 @@ interface newGeomik{
     rahaühik: string;
     kaardiVärv: string;
 }
+
 //Extend interface what used before
 interface Geomik extends newGeomik{
     id: number;

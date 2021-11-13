@@ -2,14 +2,7 @@ import { Request, Response} from'express';
 import db from '../../db';
 import {Geomik, newGeomik} from './interfaces';
 import geomikService from './service';
-
-const responseCodes = {
-    ok: 200,
-    created: 201,
-    noContent: 204,
-    badRequest: 400,
-    notFound: 404,
-  };
+import responseCodes from '../general/respondcodes';
 
 // Get all Geomik controller
 const getAllGeomik = (req: Request, res: Response) => {

@@ -5,18 +5,10 @@ import pingController from './components/ping/controller';
 import loggerMiddlewre from './components/general/middleware';
 import {riikToUppercase, createGeomikValidator} from './components/geomik/middleware';
 
+
 const app: Application = express();
 const port: number = 3000;
 
-
-
-const responseCodes = {
-    ok: 200,
-    created: 201,
-    noContent: 204,
-    badRequest: 400,
-    notFound: 404,
-  };
 
 app.use(express.json());
 app.use(loggerMiddlewre);
