@@ -1,4 +1,4 @@
-# proge_geomik
+# proge_mateemik
 just practice
 
 ## Respond codes
@@ -10,7 +10,7 @@ just practice
 
 ## Interface
 
- newGeomik{
+ newMateemik{
     riik: string;
     pealinn: string;
     kuuluvusEu: number;
@@ -20,19 +20,19 @@ just practice
     rahaühik: string;
     kaardiVärv: string;
 }
- Geomik extends newGeomik{
+ Geomik extends newMateemik{
     id: number;
 }
 
 ## Routes
 ## get
-app.get('/geomik', getAllGeomik);
-app.get('/geomik/:id', getGeomikById );
+app.get('/mateemik', getAllMateemik);
+app.get('/mateemik/:id', getMateemikById );
 ## post
-app.post('/geomik', createGeomikValidator, riikToUppercase, createGeomik);
+app.post('/mateemik', createMateemikValidator, riikToUppercase, createMateemik);
 ## delete
-app.delete('/geomik/:id', deleteGeomikById);
+app.delete('/mateemik/:id', deleteMateemikById);
 ## patch
-app.patch('/geomik/:id', updateGeomik);
+app.patch('/mateemik/:id', updateMateemik);
 
 
