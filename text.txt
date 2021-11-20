@@ -1,10 +1,1 @@
-Riik - inglise keeles
-Riik eesti keeles
-Pealinn
-Keel
-Rahaühik ja sümbol
-elanike arv
-pindala
-tere nende keeles
-kuuluvus EU liitu
-kaardi värv
+Mateemiku mäng
