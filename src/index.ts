@@ -1,29 +1,28 @@
 import express, { Application} from'express';
 //import { nanoid } from 'nanoid';
-import {getAllGeomik, getGeomikById, updateGeomik, createGeomik, deleteGeomikById } from './components/geomik/controller';
+import {getAllMateemik, getMateemikById, updateMateemik, createMateemik, deleteMateemikById } from './components/mateemik/controller';
 import pingController from './components/ping/controller';
 import loggerMiddlewre from './components/general/middleware';
-import {riikToUppercase, createGeomikValidator} from './components/geomik/middleware';
-
+import {riikToUppercase, createMateemikValidator} from './components/mateemik/middleware';
+import port from './components/general/settings';
 
 const app: Application = express();
-const port: number = 3000;
 
 
 app.use(express.json());
 app.use(loggerMiddlewre);
 
 app.get('/ping',pingController );
-//Route to get all Geomik
-app.get('/geomik', getAllGeomik);
-//Route to get Geomik by id
-app.get('/geomik/:id', getGeomikById );
-//Route to add geomik
-app.post('/geomik', createGeomikValidator, riikToUppercase, createGeomik);
+//Route to get all Mateemik
+app.get('/Mateemik', getAllMateemik);
+//Route to get Mateemik by id
+app.get('/Mateemik/:id', getMateemikById );
+//Route to add Mateemik
+app.post('/Mateemik', createMateemikValidator, riikToUppercase, createMateemik);
 //Route to update
-app.patch('/geomik/:id', updateGeomik);
+app.patch('/Mateemik/:id', updateMateemik);
 //Route to delete
-app.delete('/geomik/:id', deleteGeomikById);
+app.delete('/Mateemik/:id', deleteMateemikById);
 
 app.listen(port, () => {
     console.log(`Server is runnig on port: ${port}`);
