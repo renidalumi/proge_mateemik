@@ -1,11 +1,11 @@
-import {Geomik, newGeomik} from './components/geomik/interfaces';
+import {Mateemik, newMateemiks} from './components/mateemik/interfaces';
 
 interface Db {
-    geomiks: Geomik[];
+    Mateemiks: Mateemik[];
 }
 
 const db: Db = {
-    geomiks:[
+    Mateemiks:[
         {
             id: 1,
             riik: 'Eesti',

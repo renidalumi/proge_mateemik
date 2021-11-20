@@ -2,7 +2,7 @@ import { Request, Response, NextFunction} from'express';
 import { chownSync } from 'fs';
 import responseCodes from '../general/respondcodes';
 
-const createGeomikValidator= (req: Request, res: Response, next: NextFunction) => { 
+const createMateemikValidator= (req: Request, res: Response, next: NextFunction) => { 
   const {riik, pealinn, kuuluvusEu} = req.body;
   if (!riik){
     return res.status(responseCodes.badRequest).json({
@@ -29,4 +29,4 @@ const riikToUppercase = (req: Request, res: Response, next: NextFunction) => {
     return next();
   };
 
-  export {riikToUppercase, createGeomikValidator};
+  export {riikToUppercase, createMateemikValidator};
