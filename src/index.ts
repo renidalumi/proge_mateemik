@@ -1,28 +1,28 @@
 import express, { Application} from'express';
 //import { nanoid } from 'nanoid';
-import {getAllMateemik, getMateemikById, updateMateemik, createMateemik, deleteMateemikById } from './components/mateemik/controller';
+import {getAllVarvid, getVarvidById, updateVarvid, createVarvid, deleteVarvidById } from './components/varvid/controller';
 import pingController from './components/ping/controller';
-import loggerMiddlewre from './components/general/middleware';
-import {riikToUppercase, createMateemikValidator} from './components/mateemik/middleware';
+import loggerMiddleware from './components/general/middleware';
+import {riikToUppercase, createVarvidValidator} from './components/varvid/middleware';
 import port from './components/general/settings';
 
 const app: Application = express();
 
 
 app.use(express.json());
-app.use(loggerMiddlewre);
+app.use(loggerMiddleware);
 
 app.get('/ping',pingController );
-//Route to get all Mateemik
-app.get('/Mateemik', getAllMateemik);
-//Route to get Mateemik by id
-app.get('/Mateemik/:id', getMateemikById );
-//Route to add Mateemik
-app.post('/Mateemik', createMateemikValidator, riikToUppercase, createMateemik);
+//Route to get all Varvid
+app.get('/Varvid', getAllVarvid);
+//Route to get Varvid by id
+app.get('/Varvid/:id', getVarvidById );
+//Route to add Varvid
+app.post('/Varvid', createVarvidValidator, riikToUppercase, createVarvid);
 //Route to update
-app.patch('/Mateemik/:id', updateMateemik);
+app.patch('/Varvid/:id', updateVarvid);
 //Route to delete
-app.delete('/Mateemik/:id', deleteMateemikById);
+app.delete('/Varvid/:id', deleteVarvidById);
 
 app.listen(port, () => {
     console.log(`Server is runnig on port: ${port}`);

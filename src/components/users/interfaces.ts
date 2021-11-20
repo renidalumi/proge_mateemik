@@ -3,9 +3,9 @@ interface NewUsers{
     pereNimi: string;
     email: string;
     password: string;
-    role: 'Admi' | 'User';
+    role: 'Admin' | 'User';
 }
-interface Users{
+interface Users extends NewUsers{
     id: number;    
 }
 
@@ -15,7 +15,7 @@ interface UpdateUsers{
     pereNimi?: string;
     email?: string;
     password?: string;
-    role?: 'Admi' | 'User';
+    role?: 'Admin' | 'User';
 }
 
 export {NewUsers, Users, UpdateUsers};

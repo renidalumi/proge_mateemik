@@ -1,4 +1,4 @@
-interface newMateemiks{
+interface newVarvid{
     riik: string;
     pealinn: string;
     kuuluvusEu: number;
@@ -10,8 +10,8 @@ interface newMateemiks{
 }
 
 //Extend interface what used before
-interface Mateemik extends newMateemiks{
+interface Varvid extends newVarvid{
     id: number;
 }
 
-export  {Mateemik, newMateemiks};
+export  {Varvid, newVarvid};
