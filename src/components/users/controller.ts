@@ -10,38 +10,43 @@ const userController = {
             users,
         });
     },
-    getUserById: ( req: Request, res: Response) => {
-        const id:number = parseInt(req.params.id, 10);
+    getUserById: (req: Request, res: Response) => {
+        const id: number = parseInt(req.params.id, 10);
         if (!id) {
+        return res.status(responseCodes.badRequest).json({
+            error: 'No valid id provided',
+        });
+        }
+        if ((id === res.locals.user.id) || (res.locals.user.role === 'Admin')) {
+        const user = usersService.getUserById(id);
+        if (!user) {
             return res.status(responseCodes.badRequest).json({
-                error: 'Invalid id',
-                
+            error: `No user found with id: ${id}`,
             });
         }
-        if ((id === res.locals.users.id) || (res.locals.users.role === 'Admin')) {
-            const user = usersService.getUserById(id);
-            if (!user) {
-                return res.status(responseCodes.badRequest).json({
-                    error: `Invalid user with id: ${id}`,
-                });
-            }
-            return res.status(responseCodes.ok).json({
-                user,
-            });
+        return res.status(responseCodes.ok).json({
+            user,
+        });
         }
         return res.status(responseCodes.notAuthorized).json({
-            error: 'You hvae no premission for this',
+          error: 'You have no permission for this info',
         });
-    },
+      },
     removeUser: (req: Request, res: Response) => {
         const id: number = parseInt(req.params.id, 10);
         if (!id) {
-            return res.status(responseCodes.badRequest).json({
-                message: `User not found with id: ${id}`,
-            });
+        return res.status(responseCodes.badRequest).json({
+            error: 'No valid id provided',
+        });
+        }
+        const user = usersService.getUserById(id);
+        if (!user) {
+        return res.status(responseCodes.badRequest).json({
+            message: `User not found with id: ${id}`,
+        });
         }
         usersService.removeUser(id);
-        return res.status(responseCodes.ok).json({});
+        return res.status(responseCodes.noContent).json({});
     },
     createUser: async (req: Request, res: Response) => {
         const {

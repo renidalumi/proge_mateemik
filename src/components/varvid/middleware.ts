@@ -6,17 +6,22 @@ const createVarvidValidator= (req: Request, res: Response, next: NextFunction) =
   const {varv, vaartus, kaeVarv, kaeVaartus} = req.body;
   if (!varv){
     return res.status(responseCodes.badRequest).json({
-      message: `No riik provided`,
+      message: `No colour provided`,
     });
   }
   if (!vaartus){
     return res.status(responseCodes.badRequest).json({
-      message: `No pealinn provided`,
+      message: `No value provided`,
+    });
+  }
+  if (!kaeVarv){
+    return res.status(responseCodes.badRequest).json({
+      message: `No hand colour provided`,
     });
   }
   if (!kaeVaartus){
     return res.status(responseCodes.badRequest).json({
-      message: `No kuuluvus EU-sse provided`,
+      message: `No hand value provided`,
     });
   }
   return next();

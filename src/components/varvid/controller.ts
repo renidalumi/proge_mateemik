@@ -5,28 +5,29 @@ import VarvidService from './service';
 import responseCodes from '../general/respondcodes';
 
 // Get all Varvid controller
-const getAllVarvid = (req: Request, res: Response) => {
+const varvidController = {
+getAllVarvid: (req: Request, res: Response) => {
     const Varvids: Varvid[] = VarvidService.getAllVarvid();
     res.status(responseCodes.ok).json({
         Varvids,
     });
-};
+},
 
 //Get Varvid by id controller
-const getVarvidById =(req: Request, res: Response) => {
+getVarvidById: (req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10);
   const Varvids = VarvidService.getVarvidById(id);
   if (!Varvids) {
     return res.status(400).json({
       message: `No Varvid exists with id: ${id}`,
-     });
+    });
   }
   return res.status(200).json({
       Varvids,
   });
-};
+},
 //
-const createVarvid =(req: Request, res: Response) => {
+createVarvid: (req: Request, res: Response) => {
     console.log(req.body);
     const {varv, vaartus, kaeVarv, kaeVaartus} = req.body;
     const newVarvid = {
@@ -40,9 +41,9 @@ const createVarvid =(req: Request, res: Response) => {
     res.status(responseCodes.ok).json({
         id,
     });
-};
+},
 //update
-const updateVarvid =(req: Request, res: Response) => {
+updateVarvid: (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
     const { varv, vaartus, kaeVarv, kaeVaartus} = req.body;
     if (!id) {
@@ -69,9 +70,9 @@ const updateVarvid =(req: Request, res: Response) => {
         db.Varvid[index].kaeVaartus = kaeVaartus;
       }
     return res.status(responseCodes.noContent).send();
-  };
+  },
   //delete
-  const deleteVarvidById =(req: Request, res: Response) => {
+  deleteVarvidById: (req: Request, res: Response) => {
     const id = parseInt(req.params.id, 10);
     if (!id) {
       return res.status(400).json({
@@ -87,6 +88,7 @@ const updateVarvid =(req: Request, res: Response) => {
     }
     db.Varvid.splice(id, 1);
     return res.status(responseCodes.noContent).json();
-  };
+  },
+};
 
-  export { getAllVarvid, getVarvidById, updateVarvid, createVarvid, deleteVarvidById};
+  export default varvidController;

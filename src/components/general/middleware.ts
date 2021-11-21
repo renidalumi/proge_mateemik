@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction} from'express';
+import { Request, Response, NextFunction } from 'express';
 
-const loggerMiddleware =(req: Request, res: Response, next: NextFunction) => { 
-    console.log(`Url: ${req.url}, Method: ${req.method}, Time: ${new Date().toISOString()}`);
-    return next();
-  };
+const logger = (req: Request, res: Response, next: NextFunction) => {
+  console.log(`${req.url}, ${new Date().toISOString()}`);
+  return next();
+};
 
-  export default loggerMiddleware;
+export default logger;

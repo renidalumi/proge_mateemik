@@ -1,5 +1,5 @@
 import { resolve } from 'path/posix';
-import {Varvid, newVarvid} from './components/varvid/interfaces';
+import {Varvid} from './components/varvid/interfaces';
 import { Users } from './components/users/interfaces';
 
 interface Db {
@@ -14,7 +14,7 @@ const db: Db = {
         eesNimi: 'Mari',
         pereNimi: 'Kari',
         email: 'mari@kari.ee',
-        password: 'mari',
+        password: '$2b$10$lpBNgij.Kje.X/7Ril.q8O6KvUISKMGA1hVmP8mtiKRUpjNS1/GIW',
         role: 'Admin',
         },
         {
@@ -22,31 +22,73 @@ const db: Db = {
         eesNimi: 'Kati',
         pereNimi: 'Karu',
         email: 'kati@karu.ee',
-        password: 'kati',
+        password: '$2b$10$8AWjm.24zSZ9N1TfDuyNJuX00JEz4AhJ1SVm61Gtz.TlEyDAb6SNi',
         role: 'User',
         },
     ],
     Varvid:[
         {
             id: 1,
-            varv: 'lilla',
+            varv: 'roosa',
             vaartus: 1,
-            kaeVarv: 'sinine',
-            kaeVaartus: 3,
+            kaeVarv: 'lilla',
+            kaeVaartus: 9,
         },
         {
             id: 2,
             varv: 'punane',
             vaartus: 2,
-            kaeVarv: 'kollane',
-            kaeVaartus: 4,
+            kaeVarv: 'oraanž',
+            kaeVaartus: 8,
         },
         {
             id: 3,
-            varv: 'roosa',
+            varv: 'hall',
             vaartus: 3,
-            kaeVarv: 'roheline',
+            kaeVarv: 'pruun',
             kaeVaartus: 7,
+        },
+        {
+            id: 4,
+            varv: 'sinine',
+            vaartus: 4,
+            kaeVarv: 'roheline',
+            kaeVaartus: 6,
+        },
+        {
+            id: 5,
+            varv: 'kollane',
+            vaartus: 5,
+            kaeVarv: 'kollane',
+            kaeVaartus: 5,
+        },
+        {
+            id: 6,
+            varv: 'roheine',
+            vaartus: 6,
+            kaeVarv: 'sinine',
+            kaeVaartus: 4,
+        },
+        {
+            id: 7,
+            varv: 'pruun',
+            vaartus: 7,
+            kaeVarv: 'hall',
+            kaeVaartus: 3,
+        },
+        {
+            id: 8,
+            varv: 'oraanž',
+            vaartus: 8,
+            kaeVarv: 'punane',
+            kaeVaartus: 2,
+        },
+        {
+            id: 9,
+            varv: 'lilla',
+            vaartus: 9,
+            kaeVarv: 'roosa',
+            kaeVaartus: 1,
         },
     ]
 };
