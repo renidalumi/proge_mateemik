@@ -21,6 +21,6 @@ verify: async (token: string) => {
     return false;
     }
 },
-};
+}
 
 export default jwtService;
