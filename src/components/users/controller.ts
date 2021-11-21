@@ -29,9 +29,9 @@ const userController = {
         });
         }
         return res.status(responseCodes.notAuthorized).json({
-          error: 'You have no permission for this info',
+        error: 'You have no permission for this info',
         });
-      },
+    },
     removeUser: (req: Request, res: Response) => {
         const id: number = parseInt(req.params.id, 10);
         if (!id) {
