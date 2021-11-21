@@ -3,7 +3,7 @@ import express, { Application} from'express';
 import {getAllVarvid, getVarvidById, updateVarvid, createVarvid, deleteVarvidById } from './components/varvid/controller';
 import pingController from './components/ping/controller';
 import loggerMiddleware from './components/general/middleware';
-import {riikToUppercase, createVarvidValidator} from './components/varvid/middleware';
+import {varvToUppercase, createVarvidValidator} from './components/varvid/middleware';
 import port from './components/general/settings';
 
 const app: Application = express();
@@ -18,7 +18,7 @@ app.get('/Varvid', getAllVarvid);
 //Route to get Varvid by id
 app.get('/Varvid/:id', getVarvidById );
 //Route to add Varvid
-app.post('/Varvid', createVarvidValidator, riikToUppercase, createVarvid);
+app.post('/Varvid', createVarvidValidator, varvToUppercase, createVarvid);
 //Route to update
 app.patch('/Varvid/:id', updateVarvid);
 //Route to delete

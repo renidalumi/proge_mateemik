@@ -1,12 +1,8 @@
 interface newVarvid{
-    riik: string;
-    pealinn: string;
-    kuuluvusEu: number;
-    keel: string;
-    elanikeArv: number;
-    pindala: number;
-    rahaühik: string;
-    kaardiVärv: string;
+    varv: string;
+    vaartus: number;
+    kaeVarv: string;
+    kaeVaartus: number;
 }
 
 //Extend interface what used before

@@ -1,6 +1,7 @@
 import db from "../../db";
 import hashService from "../general/services/hashService";
 import {NewUsers, Users, UpdateUsers } from "./interfaces";
+
 const usersService = {
     getAllUsers: (): Users[] => {
         const {users} = db;

@@ -11,27 +11,23 @@ const VarvidService ={
         return Varvids ;
     },
     createVarvid: (newVarvid: newVarvid): number =>{
-        const {riik, pealinn, kuuluvusEu, keel, elanikeArv, pindala, rahaühik, kaardiVärv} = newVarvid;
+        const {varv, vaartus, kaeVarv, kaeVaartus} = newVarvid;
         const id = db.Varvid.length+1; 
         db.Varvid.push({
             id,
-            riik,
-            pealinn,
-            kuuluvusEu,
-            keel,
-            elanikeArv,
-            pindala,
-            rahaühik,
-            kaardiVärv,
+            varv,
+            vaartus,
+            kaeVarv,
+            kaeVaartus,
         });
         return id;
     },
     deleteVarvidById:  (id: number) => {
-      if (id) {
+        if (id) {
         const index = db.Varvid.findIndex((element) => element.id === id);
         db.Varvid.splice(index, 1);
-      }
-      return true;
+    }
+    return true;
     },
     };
 

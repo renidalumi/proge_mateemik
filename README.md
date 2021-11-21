@@ -8,21 +8,26 @@ just practice
     badRequest: 400,
     notFound: 404,
 
-## Interface
+## Interfaces
 
- newMateemik{
-    riik: string;
-    pealinn: string;
-    kuuluvusEu: number;
-    keel: string;
-    elanikeArv: number;
-    pindala: number;
-    rahaühik: string;
-    kaardiVärv: string;
+ interface NewUsers{
+    eesNimi: string;
+    pereNimi: string;
+    email: string;
+    password: string;
+    role: 'Admin' | 'User';
 }
- Geomik extends newMateemik{
+interface Users extends NewUsers{
+    id: number;    
+}
+
+interface UpdateUsers{
     id: number;
-}
+    eesNimi?: string;
+    pereNimi?: string;
+    email?: string;
+    password?: string;
+    role?: 'Admin' | 'User';
 
 ## Routes
 ## get

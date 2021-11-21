@@ -28,16 +28,13 @@ const getVarvidById =(req: Request, res: Response) => {
 //
 const createVarvid =(req: Request, res: Response) => {
     console.log(req.body);
-    const {riik, pealinn, kuuluvusEu, keel, elanikeArv, pindala, rahaühik, kaardiVärv} = req.body;
+    const {varv, vaartus, kaeVarv, kaeVaartus} = req.body;
     const newVarvid = {
-        riik,
-        pealinn,
-        kuuluvusEu,
-        keel,
-        elanikeArv,
-        pindala,
-        rahaühik,
-        kaardiVärv,
+        varv,
+        vaartus,
+        kaeVarv,
+        kaeVaartus,
+    
     };
     const id: Number = VarvidService.createVarvid(newVarvid);
     res.status(responseCodes.ok).json({
@@ -47,7 +44,7 @@ const createVarvid =(req: Request, res: Response) => {
 //update
 const updateVarvid =(req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
-    const { riik,pealinn, kuuluvusEu, keel, elanikeArv, pindala, rahaühik, kaardiVärv} = req.body;
+    const { varv, vaartus, kaeVarv, kaeVaartus} = req.body;
     if (!id) {
       return res.status(400).json({
         error: 'No valid id provided',
@@ -59,29 +56,17 @@ const updateVarvid =(req: Request, res: Response) => {
         error: `No Varvid found with id: ${id}`,
       });
     }
-    if (riik) {
-      db.Varvid[index].riik = riik;
+    if (varv) {
+      db.Varvid[index].varv = varv;
     }
-    if (pealinn) {
-      db.Varvid[index].pealinn = pealinn;
+    if (vaartus) {
+      db.Varvid[index].vaartus = vaartus;
     }
-    if (kuuluvusEu) {
-        db.Varvid[index].kuuluvusEu = kuuluvusEu;
+    if (kaeVarv) {
+        db.Varvid[index].kaeVarv = kaeVarv;
       }
-      if (keel) {
-        db.Varvid[index].keel = keel;
-      }
-      if (elanikeArv) {
-        db.Varvid[index].elanikeArv = elanikeArv;
-      }
-      if (pindala) {
-        db.Varvid[index].pindala = pindala;
-      }
-      if (rahaühik) {
-        db.Varvid[index].rahaühik = rahaühik;
-      }
-      if (kaardiVärv) {
-          db.Varvid[index].kaardiVärv = kaardiVärv;
+      if (kaeVaartus) {
+        db.Varvid[index].kaeVaartus = kaeVaartus;
       }
     return res.status(responseCodes.noContent).send();
   };
