@@ -20,16 +20,20 @@ const usersService = {
         return user;
     },
     createUser: async (newUsers: NewUsers) => {
-        const hashedPassword = await hashService.hash(newUsers.password);
-        const user = {
-            ...newUsers,
-            password: hashedPassword,
-
+        try {
+            const hashedPassword = await hashService.hash(newUsers.password);
+            const user = {
+                ...newUsers,
+                password: hashedPassword,
+    
+            }
+            const result = await connection.getRepository(eUser).save(user);
+            return result.id;
+        } catch (error){
+            console.log(error);
+            return false;
         }
-        const result = await connection.getRepository(eUser).save(user);
-        const id = db.users.length +1;
-        
-        return id;
+
     },
     updateUser: (users: UpdateUsers): boolean => {
         const {id, eesNimi, pereNimi} = users;

@@ -12,9 +12,26 @@ createConnection({
     entities: [eUser],
     synchronize: true,
     logging: true
-}).then(connection => {
-    // here you can start to work with your entities
-    console.log(`Database connected to ${connection.name}`);
+}).then((connection) => {
+    connection.getRepository(eUser).findOne({ role: 'Admin' }).then((user) => {
+    if (!user) {
+    const adminUser = {
+        firstName: 'Admin',
+        lastName: 'Admin',
+        email: 'admin@admin.ee',
+        password: '$2b$10$eqqC/z5dIGdcKMuvtkCHvuBZ2SwVR3r891pzBydvQzmZYguP14knS',
+        role: 'Admin',
+    };
+    connection.getRepository(eUser).save(adminUser).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
+    });
+    }
+}).catch((error) => {
+    console.log(error);
+});
+console.log(`Database connected to ${connection.name}`);
 }).catch((error) => console.log(error));
 
 export default createConnection;

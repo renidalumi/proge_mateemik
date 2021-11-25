@@ -5,9 +5,12 @@ import {
     DeleteDateColumn,
     CreateDateColumn,
     UpdateDateColumn,
+    Unique,
 } from 'typeorm';
 
 @Entity()
+@Unique(['email'])
+
 export default class eUser {
     @PrimaryGeneratedColumn()
     id!: number;
