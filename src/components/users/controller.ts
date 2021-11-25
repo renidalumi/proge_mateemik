@@ -4,8 +4,8 @@ import usersService from "./services";
 import { UpdateUsers, NewUsers } from "./interfaces";
 
 const userController = {
-    getAllUsers: ( req: Request, res: Response) => {
-        const users = usersService.getAllUsers();
+    getAllUsers: async ( req: Request, res: Response) => {
+        const users = await usersService.getAllUsers();
         return res.status(responseCodes.ok).json({
             users,
         });
