@@ -1,0 +1,135 @@
+{
+"openapi":"3.0.3",
+"info": {
+    "title":"Mateemik API",
+    "version":"1.0"
+},
+"servers": [
+    {"url":"http://localhost:3000"}
+],
+"components": {
+    "schemas": {
+    "id": {
+        "type": "number",
+        "example": 1
+    },
+    "email": {
+        "type": "string",
+        "example": "mari@kari.ee"
+    },
+    "varv": {
+        "type": "string",
+        "example": "roosa"
+    },
+    "vaartus": {
+        "type": "number",
+        "example": 1
+    },
+    "kaeVarv": {
+        "type": "string",
+        "example": "lilla"
+    },
+    "kaeVaartus": {
+        "type": "number",
+        "example": 1
+    },
+    "date": {
+        "type": "string",
+        "example": "2021-12-01T09:14:34.000Z"
+    },
+    "users": {
+        "type": "array",
+        "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+            "$ref": "#/components/schemas/id"
+            },
+            "email": {
+            "$ref": "#/components/schemas/email"
+            },
+            "dateCreated": {
+            "$ref": "#/components/schemas/date"
+            },
+            "dateUpdated": {
+            "$ref": "#/components/schemas/date"
+            }
+        }
+        }
+    },
+    "varvid": {
+        "type": "array",
+        "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+            "$ref": "#/components/schemas/id"
+            },
+            "varv": {
+            "$ref": "#/components/schemas/varv"
+            },
+            "vaartus": {
+            "$ref": "#/components/schemas/vaartus"
+            },
+            "kaeVarv": {
+            "$ref": "#/components/schemas/kaeVarv"
+            },
+            "kaeVaartus": {
+            "$ref": "#/components/schemas/kaeVaartus"
+            }
+        }
+        }
+    }
+    }
+},
+"paths": {
+    "/users": {
+    "get": {
+        "description": "All users",
+        "parameters": [],
+        "responses": {
+        "200": {
+            "description": "OK",
+            "content": {
+            "application/json": {
+                "schema": {
+                "type": "object",
+                "properties": {
+                    "users": {
+                    "type": "array",
+                    "$ref": "#/components/schemas/users"
+                    }
+                }
+                }
+            }
+            }
+        }
+        }
+    }
+    },
+    "/varvid": {
+    "get": {
+        "description": "All varvid",
+        "parameters": [],
+        "responses": {
+        "200": {
+            "description": "OK",
+            "content": {
+            "application/json": {
+                "schema": {
+                "type": "object",
+                "properties": {
+                    "varvid": {
+                    "type": "array",
+                    "$ref": "#/components/schemas/varvid"
+                    }
+                }
+                }
+            }
+            }
+        }
+        }
+    }
+    }
+}
+}
