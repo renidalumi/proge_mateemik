@@ -1,8 +1,5 @@
 import express, { Application} from'express';
 //import { nanoid } from 'nanoid';
-import { createConnections } from 'typeorm';
-import './databassee';
-
 import varvidController from './components/varvid/controller';
 import pingController from './components/ping/controller';
 import loggerMiddleware from './components/general/middleware';
@@ -21,14 +18,14 @@ app.use(loggerMiddleware);
 app.get('/ping',pingController );
 
 app.post('/login', authController.login);
-app.post('/users', userController.createUser);
+//app.post('/users', userController.createUser);
 
-//app.use(isLoggedIn);
+app.use(isLoggedIn);
 
-app.get('/users', userController.getAllUsers);  //isAdmin
-app.get('/users/:id', userController.getUserById);
-app.delete('/users/:id', userController.removeUser);
-app.patch('/users/:id', userController.updateUser);
+app.get('/users', isAdmin, userController.getAllUsers);
+// app.get('/users/:id', userController.getUserById);
+// app.delete('/users/:id', userController.removeUser);
+// app.patch('/users/:id', userController.updateUser);
 
 app.get('/Varvid', varvidController.getAllVarvid);
 app.get('/Varvid/:id', varvidController.getVarvidById );
@@ -38,4 +35,4 @@ app.delete('/Varvid/:id', varvidController.deleteVarvidById);
 
 app.listen(port, () => {
     console.log(`Server is runnig on port: ${port}`);
-});
+}); 

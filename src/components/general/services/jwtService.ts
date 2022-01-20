@@ -1,21 +1,22 @@
 import jwt from 'jsonwebtoken';
-import { Users } from '../../users/interfaces';
+import { IUsers } from '../../users/interfaces';
+import config from '../../../config';
 
-const jwtPassword = 'klönasfölkjnasföjuhwerfiuhWERFOHU';
+//const jwtPassword = 'klnasflkjnasföjuhwerfiuhWERFOHU';
 
 const jwtService = {
-sign: async (user: any) => {
+sign: async (user: IUsers): Promise<string> => {
     const payload = {
     id: user.id,
     role: user.role,
     };
-    const token = await jwt.sign(payload, jwtPassword, { expiresIn: '1h' });
+    const token = await jwt.sign(payload, config.jwtSecret, { expiresIn: '3h' });
     return token;
 },
 verify: async (token: string) => {
     try {
-    const verify = await jwt.verify(token, jwtPassword);
-    return verify;
+    const playload = await jwt.verify(token, config.jwtSecret);
+    return playload;
     } catch (error) {
     return false;
     }

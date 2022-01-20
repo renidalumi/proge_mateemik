@@ -1,4 +1,4 @@
-import {
+/* import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
@@ -39,3 +39,4 @@ export default class eUser {
     @DeleteDateColumn()
     deletedDate!: Date;
 }
+ */
