@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import responseCodes from "../general/respondcodes";
 import usersService from "./services";
-import { UpdateUsers, NewUsers } from "./interfaces";
+import { IUpdateUsers, INewUsers } from "./interfaces";
 
 const userController = {
-    getAllUsers: async ( req: Request, res: Response) => {
+    getAllUsers: async( req: Request, res: Response) => {
         const users = await usersService.getAllUsers();
         return res.status(responseCodes.ok).json({
             users,
-        });
-    },
+        })},
+
     getUserById: (req: Request, res: Response) => {
         const id: number = parseInt(req.params.id, 10);
         if (!id) {
@@ -31,7 +31,8 @@ const userController = {
         return res.status(responseCodes.notAuthorized).json({
         error: 'You have no permission for this info',
         });
-    },
+    }};
+    /*
     removeUser: (req: Request, res: Response) => {
         const id: number = parseInt(req.params.id, 10);
         if (!id) {
@@ -111,6 +112,6 @@ const userController = {
         usersService.updateUser(updateUser);
         return res.status(responseCodes.noContent).json({});
     },
-    }; 
+    };  */
     
     export default userController;
