@@ -1,7 +1,7 @@
 import express, { Application} from'express';
 //import { nanoid } from 'nanoid';
 import { createConnections } from 'typeorm';
-import './database';
+import './databassee';
 
 import varvidController from './components/varvid/controller';
 import pingController from './components/ping/controller';

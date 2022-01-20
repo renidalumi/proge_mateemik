@@ -9,8 +9,16 @@ interface Db {
 
 const db: Db = {
     users: [
-    {
-        id: 1,
+        {
+        id: 1, 
+        eesNimi: 'Admin',
+        pereNimi: 'Admin',
+        email: 'admin@admin.ee',
+        password: '$2b$10$eqqC/z5dIGdcKMuvtkCHvuBZ2SwVR3r891pzBydvQzmZYguP14knS',
+        role: 'Admin',
+        },
+        {
+        id: 2,
         eesNimi: 'Mari',
         pereNimi: 'Kari',
         email: 'mari@kari.ee',
@@ -18,7 +26,7 @@ const db: Db = {
         role: 'Admin',
         },
         {
-        id: 2,
+        id: 3,
         eesNimi: 'Kati',
         pereNimi: 'Karu',
         email: 'kati@karu.ee',

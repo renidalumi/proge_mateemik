@@ -1,3 +1,4 @@
+import pool from '../../database';
 import { getConnection } from 'typeorm';
 import db from "../../db";
 import hashService from "../general/services/hashService";
@@ -7,8 +8,8 @@ import eUser from './entity';
 const connection = getConnection();
 
 const usersService = {
-    getAllUsers: async () => {
-    const users = await connection.getRepository(eUser).find();
+    getAllUsers: async ()  => {
+    const users = await pool.query("SELECT * FROM users");
     return users;
     },
     getUserById: (id: number): Users | undefined => {
