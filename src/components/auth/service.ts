@@ -10,7 +10,9 @@ const loginService = {
     const match = await hashService.match(password, user.password);
     if(!match) return false;
     const token = await jwtService.sign(user);
+    console.log(token);
     return token;
+    
 }
 }
 
