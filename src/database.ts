@@ -6,6 +6,7 @@ const pool = mysql
     host: config.db.host,
     user: config.db.user,
     database: "mydb",
+    password: "",
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,

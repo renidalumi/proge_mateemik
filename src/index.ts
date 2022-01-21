@@ -17,12 +17,12 @@ app.use(express.json());
 app.use(loggerMiddleware);
 app.get('/ping',pingController );
 
-app.post('/login', authController.login);
+//app.post('/login', authController.login);
 //app.post('/users', userController.createUser);
 
-app.use(isLoggedIn);
+//app.use(isLoggedIn);
 
-app.get('/users', isAdmin, userController.getAllUsers);
+//app.get('/users', isAdmin, userController.getAllUsers);
 // app.get('/users/:id', userController.getUserById);
 // app.delete('/users/:id', userController.removeUser);
 // app.patch('/users/:id', userController.updateUser);

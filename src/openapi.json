@@ -13,6 +13,14 @@
         "type": "number",
         "example": 1
     },
+    "eesNimi":{
+        "type": "string",
+        "example": "Mari"
+    },
+    "pereNimi":{
+        "type": "string",
+        "example": "Kari"
+    },
     "email": {
         "type": "string",
         "example": "mari@kari.ee"
@@ -45,6 +53,12 @@
             "id": {
             "$ref": "#/components/schemas/id"
             },
+            "eesNimi": {
+                "$ref": "#/components/schemas/eesNimi"
+                },
+            "pereNimi": {
+                "$ref": "#/components/schemas/pereNimi"
+                },
             "email": {
             "$ref": "#/components/schemas/email"
             },
@@ -105,6 +119,171 @@
             }
         }
         }
+    },
+    "post":{
+        "tags": [
+            "User operations"
+        ],
+        "description": "Create new user",
+        "requestBody":{
+            "content": {
+                "application/json":{
+                    "schema":{
+                        "type": "object",
+                        "properties": {
+                            "id":{
+                                "$ref": "#/components/schemas/id"
+                            },
+                            "eesNimi":{
+                                "$ref": "#/components/schemas/eesNimi"
+                            },
+                            "pereNimi":{
+                                "$ref": "#/components/schemas/pereNimi"
+                            },
+                            "email":{
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "responses":{
+            "201":{
+                "description": "User created",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "id":{
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "delete":{
+        "tags": [
+            "User operations"
+        ],
+        "description": "Remove user",
+        "responses":{
+            "204":{
+                "description": "User removed",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "400":{
+                "description": "User not found with that id",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "error":{
+                                    "type": "string"
+                                }                               
+                        }
+                    },
+                    "examples": {
+                        "Invaild id":{
+                            "value":{
+                                "error": "No vaild id provided"
+                            }
+                        },
+                        "No user found":{
+                            "value":{
+                                "error":"User not found with id: {id}"
+                            }
+                        }
+                    }
+                }
+            }
+            }
+        }
+    },
+    "patch":{
+        "tags": [
+            "User operations"
+        ],
+        "description": "Update user",
+        "requestBody":{
+            "content": {
+                "application/json":{
+                    "schema":{
+                        "type": "object",
+                        "properties": {
+                            "id":{
+                                "$ref": "#/components/schemas/id"
+                            },
+                            "eesNimi":{
+                                "$ref": "#/components/schemas/eesNimi"
+                            },
+                            "pereNimi":{
+                                "$ref": "#/components/schemas/pereNimi"
+                            },
+                            "email":{
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "responses":{
+            "204":{
+                "description": "User updated",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "400":{
+                "description": "No user found",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "error":{
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "Invalid id":{
+                                "value":{
+                                    "error":"No valid id provided"
+                                }
+                            },
+                            "No user found":{
+                                "value":{
+                                    "error":"No user found with id: ${id}"
+                                }
+                            },
+                            "Nohting to update":{
+                                "value":{
+                                    "error":"Noting to update"
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
     }
     },
     "/varvid": {
@@ -129,7 +308,173 @@
             }
         }
         }
+
+    },
+    "post":{
+        "tags": [
+            "Varvid operations"
+        ],
+        "description": "Create new varvid",
+        "requestBody":{
+            "content": {
+                "application/json":{
+                    "schema":{
+                        "type": "object",
+                        "properties": {
+                            "id":{
+                                "$ref": "#/components/schemas/id"
+                            },
+                            "eesNimi":{
+                                "$ref": "#/components/schemas/eesNimi"
+                            },
+                            "pereNimi":{
+                                "$ref": "#/components/schemas/pereNimi"
+                            },
+                            "email":{
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "responses":{
+            "201":{
+                "description": "Varvid created",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "id":{
+                                    "$ref": "#/components/schemas/id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "delete":{
+        "tags": [
+            "Varvid operations"
+        ],
+        "description": "Remove varvid",
+        "responses":{
+            "204":{
+                "description": "Varvid removed",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "400":{
+                "description": "Varvid not found with that id",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "error":{
+                                    "type": "string"
+                                }                               
+                        }
+                    },
+                    "examples": {
+                        "Invaild id":{
+                            "value":{
+                                "error": "No vaild id provided"
+                            }
+                        },
+                        "No varvid found":{
+                            "value":{
+                                "error":"Varvid not found with id: {id}"
+                            }
+                        }
+                    }
+                }
+            }
+            }
+        }
+    },
+    "patch":{
+        "tags": [
+            "Varvid operations"
+        ],
+        "description": "Update varvid",
+        "requestBody":{
+            "content": {
+                "application/json":{
+                    "schema":{
+                        "type": "object",
+                        "properties": {
+                            "id":{
+                                "$ref": "#/components/schemas/id"
+                            },
+                            "eesNimi":{
+                                "$ref": "#/components/schemas/eesNimi"
+                            },
+                            "pereNimi":{
+                                "$ref": "#/components/schemas/pereNimi"
+                            },
+                            "email":{
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "responses":{
+            "204":{
+                "description": "Varvid updated",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "400":{
+                "description": "No varvid found",
+                "content": {
+                    "application/json":{
+                        "schema":{
+                            "type": "object",
+                            "properties": {
+                                "error":{
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "Invalid id":{
+                                "value":{
+                                    "error":"No valid id provided"
+                                }
+                            },
+                            "No varvid found":{
+                                "value":{
+                                    "error":"No varvid found with id: ${id}"
+                                }
+                            },
+                            "Nohting to update":{
+                                "value":{
+                                    "error":"Noting to update"
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
     }
     }
-}
+    }
 }
