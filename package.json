@@ -1,11 +1,11 @@
 {
-  "name": "programmeerimine2_2021_sygis",
+  "name": "mateemik",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "test": "mocha -r ts-node/register 'tests/**/*.ts' --exit"
+    "test": "nyc mocha -r ts-node/register 'tests/**/*.ts' --exit"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-plugin-import": "^2.24.2",
     "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   },

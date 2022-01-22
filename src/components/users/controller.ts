@@ -31,8 +31,8 @@ const userController = {
         return res.status(responseCodes.notAuthorized).json({
         error: 'You have no permission for this info',
         });
-    }};
-    /*
+    },
+    
     removeUser: (req: Request, res: Response) => {
         const id: number = parseInt(req.params.id, 10);
         if (!id) {
@@ -73,7 +73,7 @@ const userController = {
                 error: 'Password is required',                
             });
         }
-        const newUsers: NewUsers = {
+        const newUsers: INewUsers = {
             eesNimi,
             pereNimi,
             email,
@@ -104,7 +104,7 @@ const userController = {
             error: `No user found with id: ${id}`,
         });
         }
-        const updateUser: UpdateUsers = {
+        const updateUser: IUpdateUsers = {
             id,
             eesNimi,
             pereNimi,
@@ -112,6 +112,6 @@ const userController = {
         usersService.updateUser(updateUser);
         return res.status(responseCodes.noContent).json({});
     },
-    };  */
+};
     
     export default userController;

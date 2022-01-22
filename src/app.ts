@@ -8,7 +8,7 @@ import {varvToUppercase, createVarvidValidator} from './components/varvid/middle
 import userController from './components/users/controller';
 import authController from './components/auth/authController';
 import isLoggedIn from './components/auth/isLoggedInMiddleware';
-import isAdmin from './components/auth/isAdminMiddleware';
+// import isAdmin from './components/auth/isAdminMiddleware';
 
 const app: Application = express();
 
@@ -18,14 +18,14 @@ app.use(loggerMiddleware);
 app.get('/ping',pingController );
 
 app.post('/login', authController.login);
-//app.post('/users', userController.createUser);
+app.post('/users', userController.createUser);
 
 app.use(isLoggedIn);
 
-app.get('/users', isAdmin, userController.getAllUsers);
+app.get('/users', userController.getAllUsers);
 app.get('/users/:id', userController.getUserById);
-//app.delete('/users/:id', userController.removeUser);
-//app.patch('/users/:id', userController.updateUser);
+app.delete('/users/:id', userController.removeUser);
+app.patch('/users/:id', userController.updateUser);
 
 app.get('/Varvid', varvidController.getAllVarvid);
 app.get('/Varvid/:id', varvidController.getVarvidById );

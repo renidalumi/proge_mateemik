@@ -7,7 +7,7 @@ interface INewUsers{
     password: string;
     role: 'Admin' | 'User';
 }
-interface IUsers extends INewUsers, RowDataPacket{
+interface IUsers extends INewUsers{
     id: number;    
 }
 

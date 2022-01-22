@@ -1,6 +1,7 @@
 import { resolve } from 'path/posix';
 import {Varvid} from './components/varvid/interfaces';
 import { IUsers } from './components/users/interfaces';
+
  
 interface Db {
     Varvid: Varvid[];
@@ -9,12 +10,12 @@ interface Db {
 
 const db: Db = {
     users: [
-    /* {
+     {
         id: 1,
         eesNimi: 'Mari',
         pereNimi: 'Kari',
         email: 'mari@kari.ee',
-        password: '$2b$10$lpBNgij.Kje.X/7Ril.q8O6KvUISKMGA1hVmP8mtiKRUpjNS1/GIW',
+        password: '$2b$10$PXaNnUDAxKX44h16s6IFc.DodT5c9SF3Rw4T2LTDbp6xmlCFX6LZe',
         role: 'Admin',
         },
         {
@@ -22,9 +23,9 @@ const db: Db = {
         eesNimi: 'Kati',
         pereNimi: 'Karu',
         email: 'kati@karu.ee',
-        password: '$2b$10$8AWjm.24zSZ9N1TfDuyNJuX00JEz4AhJ1SVm61Gtz.TlEyDAb6SNi',
+        password: '$2b$10$PXaNnUDAxKX44h16s6IFc.DodT5c9SF3Rw4T2LTDbp6xmlCFX6LZe',
         role: 'User',
-        },  */
+        },  
     ],
     Varvid:[
         {
