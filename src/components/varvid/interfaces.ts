@@ -5,9 +5,9 @@ interface newVarvid{
     kaeVaartus: number;
 }
 
-//Extend interface what used before
+// Extend interface what used before
 interface Varvid extends newVarvid{
     id: number;
 }
 
-export  {Varvid, newVarvid};
+export { Varvid, newVarvid };

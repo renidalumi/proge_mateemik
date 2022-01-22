@@ -1,51 +1,55 @@
-import { Request, Response} from'express';
+import { Request, Response } from 'express';
 import db from '../../db';
-import {Varvid, newVarvid} from './interfaces';
+import { Varvid, newVarvid } from './interfaces';
 import VarvidService from './service';
 import responseCodes from '../general/respondcodes';
 
 // Get all Varvid controller
 const varvidController = {
-getAllVarvid: (req: Request, res: Response) => {
+  getAllVarvid: (req: Request, res: Response) => {
     const Varvids: Varvid[] = VarvidService.getAllVarvid();
     res.status(responseCodes.ok).json({
-        Varvids,
-    });
-},
-
-//Get Varvid by id controller
-getVarvidById: (req: Request, res: Response) => {
-  const id: number = parseInt(req.params.id, 10);
-  const Varvids = VarvidService.getVarvidById(id);
-  if (!Varvids) {
-    return res.status(400).json({
-      message: `No Varvid exists with id: ${id}`,
-    });
-  }
-  return res.status(200).json({
       Varvids,
-  });
-},
-//
-createVarvid: (req: Request, res: Response) => {
+    });
+  },
+
+  // Get Varvid by id controller
+  getVarvidById: (req: Request, res: Response) => {
+    const id: number = parseInt(req.params.id, 10);
+    const Varvids = VarvidService.getVarvidById(id);
+    if (!Varvids) {
+      return res.status(400).json({
+        message: `No Varvid exists with id: ${id}`,
+      });
+    }
+    return res.status(200).json({
+      Varvids,
+    });
+  },
+  //
+  createVarvid: (req: Request, res: Response) => {
     console.log(req.body);
-    const {varv, vaartus, kaeVarv, kaeVaartus} = req.body;
+    const {
+      varv, vaartus, kaeVarv, kaeVaartus,
+    } = req.body;
     const newVarvid = {
-        varv,
-        vaartus,
-        kaeVarv,
-        kaeVaartus,
-    
+      varv,
+      vaartus,
+      kaeVarv,
+      kaeVaartus,
+
     };
     const id: Number = VarvidService.createVarvid(newVarvid);
     res.status(responseCodes.ok).json({
-        id,
+      id,
     });
-},
-//update
-updateVarvid: (req: Request, res: Response) => {
+  },
+  // update
+  updateVarvid: (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
-    const { varv, vaartus, kaeVarv, kaeVaartus} = req.body;
+    const {
+      varv, vaartus, kaeVarv, kaeVaartus,
+    } = req.body;
     if (!id) {
       return res.status(400).json({
         error: 'No valid id provided',
@@ -64,14 +68,14 @@ updateVarvid: (req: Request, res: Response) => {
       db.Varvid[index].vaartus = vaartus;
     }
     if (kaeVarv) {
-        db.Varvid[index].kaeVarv = kaeVarv;
-      }
-      if (kaeVaartus) {
-        db.Varvid[index].kaeVaartus = kaeVaartus;
-      }
+      db.Varvid[index].kaeVarv = kaeVarv;
+    }
+    if (kaeVaartus) {
+      db.Varvid[index].kaeVaartus = kaeVaartus;
+    }
     return res.status(responseCodes.noContent).send();
   },
-  //delete
+  // delete
   deleteVarvidById: (req: Request, res: Response) => {
     const id = parseInt(req.params.id, 10);
     if (!id) {
@@ -80,7 +84,7 @@ updateVarvid: (req: Request, res: Response) => {
       });
     }
     const index = VarvidService.deleteVarvidById(id);
-    //const index = db.Varvids.findIndex((element) => element.id === id);
+    // const index = db.Varvids.findIndex((element) => element.id === id);
     if (id < 0) {
       return res.status(responseCodes.badRequest).json({
         message: `Varvid not found with id: ${id}`,
@@ -91,4 +95,4 @@ updateVarvid: (req: Request, res: Response) => {
   },
 };
 
-  export default varvidController;
+export default varvidController;

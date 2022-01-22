@@ -1,4 +1,4 @@
-import {RowDataPacket} from "mysql2";
+// import {RowDataPacket} from "mysql2";
 
 interface INewUsers{
     eesNimi: string;
@@ -8,7 +8,7 @@ interface INewUsers{
     role: 'Admin' | 'User';
 }
 interface IUsers extends INewUsers{
-    id: number;    
+    id: number;
 }
 
 interface IUpdateUsers{
@@ -20,4 +20,4 @@ interface IUpdateUsers{
     role?: 'Admin' | 'User';
 }
 
-export {INewUsers, IUsers, IUpdateUsers};
+export { INewUsers, IUsers, IUpdateUsers };

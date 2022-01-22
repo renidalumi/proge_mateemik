@@ -1,37 +1,39 @@
-import { Request, Response, NextFunction} from'express';
-import { chownSync } from 'fs';
+import { Request, Response, NextFunction } from 'express';
+// import { chownSync } from 'fs';
 import responseCodes from '../general/respondcodes';
 
-const createVarvidValidator= (req: Request, res: Response, next: NextFunction) => { 
-  const {varv, vaartus, kaeVarv, kaeVaartus} = req.body;
-  if (!varv){
+const createVarvidValidator = (req: Request, res: Response, next: NextFunction) => {
+  const {
+    varv, vaartus, kaeVarv, kaeVaartus,
+  } = req.body;
+  if (!varv) {
     return res.status(responseCodes.badRequest).json({
-      message: `No colour provided`,
+      message: 'No colour provided',
     });
   }
-  if (!vaartus){
+  if (!vaartus) {
     return res.status(responseCodes.badRequest).json({
-      message: `No value provided`,
+      message: 'No value provided',
     });
   }
-  if (!kaeVarv){
+  if (!kaeVarv) {
     return res.status(responseCodes.badRequest).json({
-      message: `No hand colour provided`,
+      message: 'No hand colour provided',
     });
   }
-  if (!kaeVaartus){
+  if (!kaeVaartus) {
     return res.status(responseCodes.badRequest).json({
-      message: `No hand value provided`,
+      message: 'No hand value provided',
     });
   }
   return next();
 };
 
-const varvToUppercase = (req: Request, res: Response, next: NextFunction) => { 
-    const {varv} = req.body;
-    const uppercaseVarv = varv.toUpperCase();
-    req.body.varv = uppercaseVarv;
-    return next();
-  };
+const varvToUppercase = (req: Request, res: Response, next: NextFunction) => {
+  const { varv } = req.body;
+  const uppercaseVarv = varv.toUpperCase();
+  req.body.varv = uppercaseVarv;
+  return next();
+};
 
-  export {varvToUppercase, createVarvidValidator};
+export { varvToUppercase, createVarvidValidator };
