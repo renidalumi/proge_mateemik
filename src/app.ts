@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(loggerMiddleware);
 app.get('/ping', pingController);
 
-// app.post('/login', authController.login);
+app.post('/login', authController.login);
 app.post('/users', userController.createUser);
 
 // app.use(isLoggedIn);

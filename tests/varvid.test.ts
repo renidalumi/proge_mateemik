@@ -36,7 +36,7 @@ describe('Varvid controller', () => {
       expect(response.body).to.be.a('object');
       expect(response.statusCode).to.equal(401);
       expect(response.body).to.have.key('error');
-      expect(response.body.error).to.equal('No token provided');
+      expect(response.body.error).to.equal('Token is not valid');
     });
     it('responds with code 401 and message with error of no token provided', async () => {
       const response = await request(app)
@@ -45,7 +45,7 @@ describe('Varvid controller', () => {
       expect(response.body).to.be.a('object');
       expect(response.statusCode).to.equal(401);
       expect(response.body).to.have.key('error');
-      expect(response.body.error).to.equal('Token is not valid');
+      expect(response.body.error).to.equal('No token provided');
     });
     it('responds with code 200 and array of varvid', async () => {
       const response = await request(app)

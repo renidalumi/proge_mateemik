@@ -1,5 +1,4 @@
-import { Request, Response, NextFunction, urlencoded 
-} from 'express';
+import { Request, Response, NextFunction} from 'express';
 import responseCodes from '../general/respondcodes';
 
 const isAdmin = async (req: Request, res: Response, next: NextFunction) => {
