@@ -28,7 +28,7 @@ const varvidController = {
   },
   //
   createVarvid: (req: Request, res: Response) => {
-    console.log(req.body);
+    // console.log(req.body);
     const {
       varv, vaartus, kaeVarv, kaeVaartus,
     } = req.body;

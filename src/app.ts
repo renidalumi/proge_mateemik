@@ -16,10 +16,10 @@ app.use(express.json());
 app.use(loggerMiddleware);
 app.get('/ping', pingController);
 
-app.post('/login', authController.login);
+// app.post('/login', authController.login);
 app.post('/users', userController.createUser);
 
-app.use(isLoggedIn);
+// app.use(isLoggedIn);
 
 app.get('/users', userController.getAllUsers);
 app.get('/users/:id', userController.getUserById);
@@ -29,7 +29,7 @@ app.patch('/users/:id', userController.updateUser);
 app.get('/Varvid', varvidController.getAllVarvid);
 app.get('/Varvid/:id', varvidController.getVarvidById);
 app.post('/Varvid', createVarvidValidator, varvToUppercase, varvidController.createVarvid);
-app.patch('/Varvid/:id', varvidController.updateVarvid);
-app.delete('/Varvid/:id', varvidController.deleteVarvidById);
+// app.patch('/Varvid/:id', varvidController.updateVarvid);
+// app.delete('/Varvid/:id', varvidController.deleteVarvidById);
 
 export default app;
