@@ -76,14 +76,14 @@ const varvidController = {
     return res.status(responseCodes.noContent).send();
   },
   // delete
-  deleteVarvidById: (req: Request, res: Response) => {
+  deleteVarvidById: async (req: Request, res: Response) => {
     const id = parseInt(req.params.id, 10);
     if (!id) {
       return res.status(400).json({
         error: 'No valid id provided',
       });
     }
-    const index = VarvidService.deleteVarvidById(id);
+    const index = await VarvidService.deleteVarvidById(id);
     // const index = db.Varvids.findIndex((element) => element.id === id);
     if (id < 0) {
       return res.status(responseCodes.badRequest).json({

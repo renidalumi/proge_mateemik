@@ -2,6 +2,7 @@ import request from 'supertest';
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import app from '../src/app';
+import responseCodes from '../src/components/general/respondcodes';
 
 const user = {
   email: 'mari@kari.ee',
@@ -12,9 +13,18 @@ const deleteVarvid = {
   wrongId: 'abc',
 };
 
+const findVarvid = {
+  id: 6,
+};
+
+const upVarvid = {
+  id: 1,
+};
+
 let token: string;
 let varvidId: number;
 let id: number;
+
 
 describe('Varvid controller', () => {
   describe('GET /varvid', () => {
@@ -68,7 +78,7 @@ describe('Varvid controller', () => {
     });
     it('response with code 200 and found varvid by ID', async () => {
       const response = await request(app)
-        .get(`/varvid/${varvidId}`)
+        .get(`/varvid/${findVarvid.id}`)
         .set('Authorization', `Bearer ${token}`);
       expect(response.body).to.be.a('object');
       expect(response.statusCode).to.equal(200);
@@ -169,6 +179,34 @@ describe('Varvid controller', () => {
         .set('Authorization', `Bearer ${token}`);
       expect(response.body).to.be.a('object');
       expect(response.statusCode).to.equal(404);
+    });
+  });
+  describe('UPDATE /varvid', () => {
+    it('responds with code 400 and message of No valid id provided', async () => {
+      const response = await request(app)
+        .patch(`/varvid/${deleteVarvid.wrongId}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(400);
+    });
+    it('responds with code 404 and error message of No varvid with that id', async () => {
+      const response = await request(app)
+        .patch(`/varvid/${upVarvid.id}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(404);
+      expect(response.body).to.have.key('error');
+      expect(response.body.error).to.equal(`No Varvid found with id: ${id}`);
+    });
+    it('responds with code 204 and no content message', async () => {
+      const response = await request(app)
+        .patch(`/varvid/${upVarvid.id}`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          varv: 'lilla',
+        });
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(204);
     });
   });
 });

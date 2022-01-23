@@ -189,7 +189,7 @@ describe('User controller', () => {
   describe('UPDATE /user', () => {
     it('responds with code 400 and message of No valid id provided', async () => {
       const response = await request(app)
-        .delete(`/user/${updateUser.id}`)
+        .patch(`/user/${updateUser.id}`)
         .set('Authorization', `Bearer ${token}`)
         .send({});
       expect(response.body).to.be.a('object');
@@ -199,7 +199,7 @@ describe('User controller', () => {
     });
     it('responds with code 400 and error message of No user with that id', async () => {
       const response = await request(app)
-        .delete(`/user/${updateUser.id}`)
+        .patch(`/user/${updateUser.id}`)
         .set('Authorization', `Bearer ${token}`)
         .send({
           eesNimi: 'Uus nimi',
@@ -210,7 +210,7 @@ describe('User controller', () => {
     });
     it('responds with code 204 and no cntent message', async () => {
       const response = await request(app)
-        .delete(`/user/${updateUser.id}`)
+        .patch(`/user/${updateUser.id}`)
         .set('Authorization', `Bearer ${token}`)
         .send({
           eesNimi: 'Uus nimi',
