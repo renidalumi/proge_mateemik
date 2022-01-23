@@ -179,4 +179,20 @@ describe('User controller', () => {
       expect(response.statusCode).to.equal(400);
     });
   });
+  describe('UPDATE /user', () => {
+    it('responds with code 400 and message of No valid id provided', async () => {
+      const response = await request(app)
+        .delete(`/user/${updateUser.id}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(400);
+    });
+    it('responds with code 400 and error message of No user with that id', async () => {
+      const response = await request(app)
+        .delete(`/user/${updateUser.id}`)
+        .set('Authorization', `Bearer ${token}`);
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(400);
+    });
+  });
 });

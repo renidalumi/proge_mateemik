@@ -8,22 +8,22 @@ const createVarvidValidator = (req: Request, res: Response, next: NextFunction) 
   } = req.body;
   if (!varv) {
     return res.status(responseCodes.badRequest).json({
-      message: 'No colour provided',
+      error: 'No colour provided',
     });
   }
   if (!vaartus) {
     return res.status(responseCodes.badRequest).json({
-      message: 'No value provided',
+      error: 'No value provided',
     });
   }
   if (!kaeVarv) {
     return res.status(responseCodes.badRequest).json({
-      message: 'No hand colour provided',
+      error: 'No hand colour provided',
     });
   }
   if (!kaeVaartus) {
     return res.status(responseCodes.badRequest).json({
-      message: 'No hand value provided',
+      error: 'No hand value provided',
     });
   }
   return next();

@@ -90,7 +90,7 @@ describe('Varvid controller', () => {
       expect(response.statusCode).to.equal(400);
       expect(response.body).to.have.key('error');
       expect(response.body.error).to.be.a('string');
-      expect(response.body.error).to.equal(!'No colour provided');
+      expect(response.body.error).to.equal('No colour provided');
     });
     it('responds with code 400 and message of error missing value', async () => {
       const response = await request(app)
@@ -105,7 +105,7 @@ describe('Varvid controller', () => {
       expect(response.statusCode).to.equal(400);
       expect(response.body).to.have.key('error');
       expect(response.body.error).to.be.a('string');
-      expect(response.body.error).to.equal(!'No value providedd');
+      expect(response.body.error).to.equal('No value provided');
     });
     it('responds with code 400 and message of error missing hand colour', async () => {
       const response = await request(app)
@@ -120,7 +120,7 @@ describe('Varvid controller', () => {
       expect(response.statusCode).to.equal(400);
       expect(response.body).to.have.key('error');
       expect(response.body.error).to.be.a('string');
-      expect(response.body.error).to.equal(!'No hand colour provided');
+      expect(response.body.error).to.equal('No hand colour provided');
     });
     it('responds with code 400 and message of error missing hand value', async () => {
       const response = await request(app)
@@ -132,10 +132,11 @@ describe('Varvid controller', () => {
           kaeVarv: 'lilla',
         });
       expect(response.body).to.be.a('object');
+      //  console.log(response.body);
       expect(response.statusCode).to.equal(400);
       expect(response.body).to.have.key('error');
       expect(response.body.error).to.be.a('string');
-      expect(response.body.error).to.equal(!'No hand value provided');
+      expect(response.body.error).to.equal('No hand value provided');
     });
     it('response with code 201 and id new varvid', async () => {
       const response = await request(app)

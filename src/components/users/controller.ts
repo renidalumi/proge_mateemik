@@ -11,7 +11,7 @@ const userController = {
     });
   },
 
-  getUserById: (req: Request, res: Response) => {
+  getUserById: async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
     if (!id) {
       return res.status(responseCodes.badRequest).json({
@@ -34,14 +34,14 @@ const userController = {
     });
   },
 
-  removeUser: (req: Request, res: Response) => {
+  removeUser: async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
     if (!id) {
       return res.status(responseCodes.badRequest).json({
         error: 'No valid id provided',
       });
     }
-    const user = usersService.getUserById(id);
+    const user = await usersService.getUserById(id);
     if (!user) {
       return res.status(responseCodes.badRequest).json({
         message: `User not found with id: ${id}`,
